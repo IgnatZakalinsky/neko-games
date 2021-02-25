@@ -1,11 +1,21 @@
-import React from 'react'
+import React, {DetailedHTMLProps, HTMLAttributes} from 'react'
 import s from './Container.module.css'
 
-const Container: React.FC = ({...restProps}) => {
+type DivPropsType = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+type ContainerPropsType = DivPropsType & {
+
+}
+
+const Container: React.FC<ContainerPropsType> = ({className, ...restProps}) => {
+    const classNameFinal = s.div + (
+        className
+            ? ' ' + className
+            : ''
+    )
+
     return (
         <div
-            className={s.div}
-
+            className={classNameFinal}
             {...restProps}
         />
     )
